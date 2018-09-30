@@ -1,0 +1,14 @@
+.vs/
+*.suo
+*.user
+*.sdf
+*.opensdf
+debug/
+*/debug/
+release/
+*/release/
+obj/
+*/obj/
+bin/
+*/bin/
+
