@@ -5,66 +5,37 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.NetworkInformation;
+using Trace;
+using System.Threading;
+
 
 namespace pingTest
 {
     class ConsoleMain
     { 
 
-        public static IEnumerable<PingReply> GetTraceRoute_reply(string hostname)
-        {
-            // following are the defaults for the "traceroute" command in unix.
-            const int timeout = 10000;
-            const int maxTTL = 30;
-            const int bufferSize = 32;
-
-            byte[] buffer = new byte[bufferSize];
-            new Random().NextBytes(buffer);
-            Ping pinger = new Ping();
-
-            for (int ttl = 1; ttl <= maxTTL; ttl++)
-            {
-                PingOptions options = new PingOptions(ttl, true);
-                PingReply reply = pinger.Send(hostname, timeout, buffer, options);
-
-
-                switch (reply.Status)
-                {
-                    case IPStatus.Success:
-                        yield return reply;
-                        break;
-                    case IPStatus.TtlExpired:
-                        yield return reply;
-                        continue;
-                    case IPStatus.TimedOut:
-                        continue;
-                    default:
-                        break;
-                }
-
-                
-                break;
-            }
-        }
-
         static void Main(string[] args)
         {
 
-            
 
-            IEnumerable<PingReply> y = GetTraceRoute_reply("google.com");
-            foreach (var i in y)
+            TraceService x = new TraceService("drudgereport.com");
+
+            foreach(var trace in x.Traces)
             {
-                Console.WriteLine("Time: {0}", i.RoundtripTime);
-                Console.WriteLine("Status: " + i.Status.ToString());
-                try
-                {
-                    Console.WriteLine(Dns.GetHostEntry(i.Address).HostName.ToString());
-                }
-                catch { }
-                Console.WriteLine(i.Address.ToString());
-                Console.WriteLine("--------------------------");
+                Console.WriteLine($"{trace.IPRoutes.Address.ToString()}  {trace.IPRoutes.RoundtripTime}ms  {trace.Hostname}");
             }
+
+            while(true)
+            {
+                foreach (var trace in x.Traces)
+                {
+                    trace.Ping();
+                    Console.WriteLine($"{trace.IPRoutes.Address.ToString()}  {trace.roundTripTime}ms  {trace.Hostname}");
+                }
+
+                System.Threading.Thread.Sleep(1000);
+            }
+
 
         }
     }
