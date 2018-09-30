@@ -8,7 +8,7 @@ using System.Net.NetworkInformation;
 
 namespace pingTest
 {
-    class Program
+    class ConsoleMain
     { 
 
         public static IEnumerable<PingReply> GetTraceRoute_reply(string hostname)
@@ -61,10 +61,7 @@ namespace pingTest
                 {
                     Console.WriteLine(Dns.GetHostEntry(i.Address).HostName.ToString());
                 }
-                catch (Exception e)
-                {
-
-                }
+                catch { }
                 Console.WriteLine(i.Address.ToString());
                 Console.WriteLine("--------------------------");
             }
