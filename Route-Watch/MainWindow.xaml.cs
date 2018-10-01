@@ -23,6 +23,7 @@ namespace Route_Watch
         public MainWindow()
         {
             InitializeComponent();
+            
         }
     }
 }

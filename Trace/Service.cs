@@ -12,6 +12,7 @@ namespace Trace
 
     public class TraceService
     {
+        
         const int timeout = 10000;
         const int maxTTL = 30;
         const int bufferSize = 32;
@@ -50,7 +51,7 @@ namespace Trace
                     case IPStatus.TimedOut:
                         continue;
                     default:
-                        break;
+                        continue;
                 }
 
 

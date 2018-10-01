@@ -9,6 +9,9 @@ using Trace;
 using System.Threading;
 
 
+
+
+
 namespace pingTest
 {
     class ConsoleMain
@@ -27,6 +30,7 @@ namespace pingTest
 
             while(true)
             {
+                Console.WriteLine("-------------------");
                 foreach (var trace in x.Traces)
                 {
                     trace.Ping();
@@ -36,6 +40,7 @@ namespace pingTest
                 System.Threading.Thread.Sleep(1000);
             }
 
+            
 
         }
     }
