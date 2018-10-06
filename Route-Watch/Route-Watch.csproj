@@ -122,5 +122,11 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Trace\Routes.csproj">
+      <Project>{9158ff08-bbe3-411b-a60f-ee4547b212e1}</Project>
+      <Name>Routes</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

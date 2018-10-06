@@ -7,7 +7,7 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Windows;
 
-namespace Trace
+namespace Routes
 {
     public class Trace
     {
@@ -72,19 +72,19 @@ namespace Trace
             }
         }
 
-        private double averagePing()
+        private double AveragePing()
         {
             return totalPing / successfulPings;
         }
 
-        private double packetLoss()
+        private double PacketLoss()
         {
             return (double)(failedPings / attemptedPings);
         }
 
-        public string[] listItems()
+        public string[] ListItems()
         {
-            return new string[] { IPRoutes.Address.ToString(), Hostname, packetLoss().ToString(), failedPings.ToString(), averagePing().ToString(), minPing.ToString(), maxPing.ToString(), roundTripTime.ToString() };
+            return new string[] { IPRoutes.Address.ToString(), Hostname, PacketLoss().ToString(), failedPings.ToString(), AveragePing().ToString(), minPing.ToString(), maxPing.ToString(), roundTripTime.ToString() };
         }
     }      
 }

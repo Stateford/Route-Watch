@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Routes;
 
 namespace Route_Watch
 {
@@ -20,9 +21,21 @@ namespace Route_Watch
     /// </summary>
     public partial class MainWindow : Window
     {
+        private List<TraceService> Traces;
         public MainWindow()
         {
             InitializeComponent();
+            InitalizeWindow();
+        }
+
+        private void InitalizeWindow()
+        {
+            Traces = new List<TraceService>();
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

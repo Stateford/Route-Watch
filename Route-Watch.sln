@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Route-Watch-Console", "Rout
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{DDB41637-6052-4764-97CA-3FCD6BC2759E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trace", "Trace\Trace.csproj", "{9158FF08-BBE3-411B-A60F-EE4547B212E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Routes", "Trace\Routes.csproj", "{9158FF08-BBE3-411B-A60F-EE4547B212E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
