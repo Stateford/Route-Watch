@@ -7,8 +7,6 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Windows;
 
-
-
 namespace Trace
 {
     public class Trace
@@ -16,15 +14,12 @@ namespace Trace
         private const int timeout = 1000;
         private const int maxTTL = 30;
         private const int bufferSize = 32;
-
         private long minPing = 0;
         private long maxPing = 0;
         private long totalPing = 0;
-
         private int attemptedPings = 0;
         private int successfulPings = 0;
         private int failedPings = 0;
-
 
         public PingReply IPRoutes { get; private set; }
         public string Hostname { get; private set; }
@@ -61,7 +56,6 @@ namespace Trace
                     roundTripTime = -1;
                     failedPings++;
                 }
-                
                 else
                 {
                     roundTripTime = tempReply.RoundtripTime;
@@ -92,10 +86,5 @@ namespace Trace
         {
             return new string[] { IPRoutes.Address.ToString(), Hostname, packetLoss().ToString(), failedPings.ToString(), averagePing().ToString(), minPing.ToString(), maxPing.ToString(), roundTripTime.ToString() };
         }
-
-        
-    }
-
-
-        
+    }      
 }

@@ -8,19 +8,12 @@ using System.Net.NetworkInformation;
 using Trace;
 using System.Threading;
 
-
-
-
-
 namespace pingTest
 {
     class ConsoleMain
     { 
-
         static void Main(string[] args)
         {
-
-
             TraceService x = new TraceService("drudgereport.com");
 
             foreach(var trace in x.Traces)
@@ -39,9 +32,6 @@ namespace pingTest
 
                 System.Threading.Thread.Sleep(1000);
             }
-
-            
-
         }
     }
 }

@@ -3,20 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using System.Net;
 using System.Net.NetworkInformation;
 
 namespace Trace
 {
-
     public class TraceService
     {
-        
         const int timeout = 10000;
         const int maxTTL = 30;
         const int bufferSize = 32;
-
         public string Hostname { get; private set; }
         public List<Trace> Traces { get; private set; }
 
@@ -25,8 +21,6 @@ namespace Trace
             Hostname = hostname;
             Traces = TraceRoute().ToList();
         }
-
-
 
         private IEnumerable<Trace> TraceRoute()
         {
@@ -53,13 +47,9 @@ namespace Trace
                     default:
                         continue;
                 }
-
-
                 break;
             }
         }
-
     }
-
 }
 
