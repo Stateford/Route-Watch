@@ -10,19 +10,28 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListView HorizontalAlignment="Left" Height="310" Margin="25,45,0,0" VerticalAlignment="Top" Width="655" SelectionMode="Multiple">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="IP Address"/>
-                    <GridViewColumn Header="Hostname"/>
-                    <GridViewColumn Header="PL%"/>
-                    <GridViewColumn Header="Errors"/>
-                    <GridViewColumn Header="Avg"/>
-                    <GridViewColumn Header="Min"/>
-                    <GridViewColumn Header="Max"/>
-                    <GridViewColumn Header="Ping"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <TabControl Margin="45,20,52,28">
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5">
+                    <ListView Margin="10,10,47,23" SelectionMode="Multiple">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="IP Address"/>
+                                <GridViewColumn Header="Hostname"/>
+                                <GridViewColumn Header="PL%"/>
+                                <GridViewColumn Header="Errors"/>
+                                <GridViewColumn Header="Avg"/>
+                                <GridViewColumn Header="Min"/>
+                                <GridViewColumn Header="Max"/>
+                                <GridViewColumn Header="Ping"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem Header="+">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
