@@ -10,7 +10,7 @@ namespace Routes
 {
     public class TraceService
     {
-        const int timeout = 10000;
+        const int timeout = 1000;
         const int maxTTL = 30;
         const int bufferSize = 32;
         public string Hostname { get; private set; }

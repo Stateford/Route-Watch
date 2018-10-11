@@ -38,7 +38,7 @@ namespace Route_Watch
             var foo = new Thread(() => Updater("drudgereport.com"));
             foo.Start();
         }
-
+        // TODO: data bind 
         private void Updater(string url)
         {
             while(Running)

@@ -91,6 +91,7 @@ namespace Routes
             return new string[] { IPRoutes.Address.ToString(), Hostname, PacketLoss().ToString(), failedPings.ToString(), AveragePing().ToString(), minPing.ToString(), maxPing.ToString(), roundTripTime.ToString() };
         }
 
+        // TODO: return observable collection
         public ListViewItem ListView()
         {
             return new ListViewItem
