@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Route_Watch"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -13,7 +13,7 @@
         <TabControl Margin="45,20,52,28">
             <TabItem Header="TabItem">
                 <Grid Background="#FFE5E5E5">
-                    <ListView Margin="10,10,47,23" SelectionMode="Multiple">
+                    <ListView Name="lvDataView"  Margin="10,10,47,23" SelectionMode="Multiple">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="IP Address"/>

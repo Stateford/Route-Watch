@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Routes
 {
@@ -74,6 +75,9 @@ namespace Routes
 
         private double AveragePing()
         {
+            if (successfulPings <= 0)
+                return 0;
+
             return totalPing / successfulPings;
         }
 
@@ -82,9 +86,17 @@ namespace Routes
             return (double)(failedPings / attemptedPings);
         }
 
-        public string[] ListItems()
+        private string[] ListItems()
         {
             return new string[] { IPRoutes.Address.ToString(), Hostname, PacketLoss().ToString(), failedPings.ToString(), AveragePing().ToString(), minPing.ToString(), maxPing.ToString(), roundTripTime.ToString() };
+        }
+
+        public ListViewItem ListView()
+        {
+            return new ListViewItem
+            {
+                Content = ListItems()
+            };
         }
     }      
 }
