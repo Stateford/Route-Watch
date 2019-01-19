@@ -24,8 +24,33 @@ namespace Routes
 
         public PingReply IPRoutes { get; private set; }
         public string Hostname { get; private set; }
+        public string IPAddress
+        {
+            get { return IPRoutes.Address.ToString(); }
+        }
 
-        public long roundTripTime { get; private set; }
+        public double AveragePing
+        {
+            get
+            {
+                if (successfulPings <= 0)
+                    return 0;
+
+                return totalPing / successfulPings;
+            }
+        }
+
+        public double PacketLoss
+        {
+            get { return (double)(failedPings / attemptedPings); }
+        }
+
+        public int Errors
+        {
+            get { return failedPings; }
+        }
+
+        public long RoundTripTime { get; private set; }
 
         public Trace(PingReply reply)
         {
@@ -54,12 +79,12 @@ namespace Routes
 
                 if(tempReply.Status == IPStatus.TimedOut)
                 {
-                    roundTripTime = -1;
+                    RoundTripTime = -1;
                     failedPings++;
                 }
                 else
                 {
-                    roundTripTime = tempReply.RoundtripTime;
+                    RoundTripTime = tempReply.RoundtripTime;
 
                     if (maxPing < tempReply.RoundtripTime)
                         maxPing = tempReply.RoundtripTime;
@@ -73,31 +98,6 @@ namespace Routes
             }
         }
 
-        private double AveragePing()
-        {
-            if (successfulPings <= 0)
-                return 0;
 
-            return totalPing / successfulPings;
-        }
-
-        private double PacketLoss()
-        {
-            return (double)(failedPings / attemptedPings);
-        }
-
-        private string[] ListItems()
-        {
-            return new string[] { IPRoutes.Address.ToString(), Hostname, PacketLoss().ToString(), failedPings.ToString(), AveragePing().ToString(), minPing.ToString(), maxPing.ToString(), roundTripTime.ToString() };
-        }
-
-        // TODO: return observable collection
-        public ListViewItem ListView()
-        {
-            return new ListViewItem
-            {
-                Content = ListItems()
-            };
-        }
     }      
 }

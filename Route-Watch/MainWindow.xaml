@@ -10,17 +10,17 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TabControl Margin="45,20,52,28">
+        <TabControl Margin="10,10,87,38">
             <TabItem Header="TabItem">
                 <Grid Background="#FFE5E5E5">
                     <ListView Name="lvDataView"  Margin="10,10,47,23" SelectionMode="Multiple">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="IP Address"/>
-                                <GridViewColumn Header="Hostname"/>
-                                <GridViewColumn Header="PL%"/>
-                                <GridViewColumn Header="Errors"/>
-                                <GridViewColumn Header="Avg"/>
+                                <GridViewColumn Header="IP Address" DisplayMemberBinding="{Binding Path=IPAddress}"/>
+                                <GridViewColumn Header="Hostname" DisplayMemberBinding="{Binding Path=Hostname}"/>
+                                <GridViewColumn Header="PL%" DisplayMemberBinding="{Binding Path=PacketLoss}"/>
+                                <GridViewColumn Header="Errors" DisplayMemberBinding="{Binding Path=Errors}"/>
+                                <GridViewColumn Header="Avg" DisplayMemberBinding="{Binding Path=AveragePing}"/>
                                 <GridViewColumn Header="Min"/>
                                 <GridViewColumn Header="Max"/>
                                 <GridViewColumn Header="Ping"/>

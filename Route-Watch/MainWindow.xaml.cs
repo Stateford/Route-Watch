@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
 using Routes;
 
 namespace Route_Watch
@@ -22,8 +23,10 @@ namespace Route_Watch
     /// </summary>
     public partial class MainWindow : Window
     {
-        private List<TraceService> Traces;
+        //private List<TraceService> Traces;
         private bool Running;
+        private List<TraceService> TraceService;
+        private ObservableCollection<Trace> Traces;
 
         public MainWindow()
         {
@@ -34,9 +37,11 @@ namespace Route_Watch
         private void InitalizeWindow()
         {
             Running = true;
-            Traces = new List<TraceService>();
+            Traces = new ObservableCollection<Trace>();
+            TraceService = new List<TraceService>();
             var foo = new Thread(() => Updater("drudgereport.com"));
             foo.Start();
+            lvDataView.ItemsSource = Traces;
         }
         // TODO: data bind 
         private void Updater(string url)
@@ -47,14 +52,13 @@ namespace Route_Watch
                     Traces.RemoveAt(0);
 
                 var trace = new TraceService(url);
-                Traces.Add(trace);
+                
+                // Dispatcher.Invoke(() => lvDataView.Items.Clear());
 
-                Dispatcher.Invoke(() => lvDataView.Items.Clear());
-
-                foreach (var tr in trace.Traces)
+                foreach (Trace tr in trace.Traces)
                 {
                     tr.Ping();
-                    Dispatcher.Invoke(() => lvDataView.Items.Add(tr.ListView()));
+                    Dispatcher.Invoke(() => Traces.Add(tr));
                 }
                 Thread.Sleep(5000);
             }
